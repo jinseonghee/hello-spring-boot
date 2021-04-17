@@ -1,0 +1,25 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'  //java version
+
+repositories {
+	mavenCentral() //공개된 site(밑에 있는 Library들을 다운받아라라는 뜻)
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-devtools' //컴파일만 해주면 서버 재시작 없이 view 파일 변경
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' //test library
+
+}
+
+test {
+	useJUnitPlatform()
+}

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-//@Repository
+@Repository
 public interface MemberRepository { // 아직 데이터 저장소가 선정되지 않았음의 가상의 시나리오를 썼기 떄문에 class를 변경가능하게 설계하기 위해 interface를 씀
     //저장소에 있는 모든 기능 만들기
     Member save(Member member); //회원을 저장하면 저장된 회원이 반환

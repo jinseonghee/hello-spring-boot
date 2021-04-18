@@ -80,4 +80,16 @@ class MemberServiceTest {
     @Test
     void findOne() {
     }
+
+    @Test
+    public void 테스트스프링을출력하는지확인해본다() {
+        //g
+
+        //w
+        String helloTest = memberService.testMethod();
+        //t
+        assertThat(helloTest).isEqualTo("hello");
+    }
+
+
 }

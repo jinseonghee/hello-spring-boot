@@ -26,10 +26,16 @@ public class MemberService {
     public Long join(Member member) {
         //같은 이름이 있는 중복 회원X
 
-        validateDuplicateMember(member);//중복회원 검증
-        memberRepository.save(member); //중복회원 검증 통과하면 저장
-        return member.getId(); //id만 반환해줌
-
+        long start = System.currentTimeMillis();
+        try {
+            validateDuplicateMember(member);//중복회원 검증
+            memberRepository.save(member); //중복회원 검증 통과하면 저장
+            return member.getId(); //id만 반환해줌
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
     }
 
     //Join이라는 회원가입 함수에 중복되지 않은 회원임을 구분하는 기능을써서 하나의 함수에 기능이 두 개이기 때문에, 하나의 함수에 하나의 행위만을 해야해서, extract로 추출
@@ -48,8 +54,15 @@ public class MemberService {
 
     //전체 회원 조회
     public List<Member> findMembers() {
-        return memberRepository.findAll();
 
+        long start = System.currentTimeMillis();
+        try {
+            return memberRepository.findAll();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("findMembers " + timeMs + "ms");
+        }
     }
 
     public Optional<Member> findOne(Long memberId) {
